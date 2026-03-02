@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notification Box</title>
+
+</head>
+<body>
+	<div class="notify-box">
+		<!--Show the option to register/login to an account when click on the notification button-->
+		<ng-container>
+			<div class="notify-box">
+				<span class="exit">&times;</span>
+				
+				<h2 class=notify-title>Would you like to be notified for this event?</h2>
+
+				<div class="notify-info">
+				<p><strong>Event Name:</strong> App Club</p>
+				<p><strong>Time:</strong> 2:45 - 3:45 P.M.</p>
+				<p><strong>Location:</strong> Room 225</p>
+				</div>
+				<div class="btn">
+				<button class="btn no">No</button>
+				<button class="btn yes">Yes</button>
+			</div>
+		</div>
+		</ng-container>
+		<!--Show the option to enter email to be notified when click on the notification button-->
+		<ng-container>
+			<div class="notify-title">Enter Your Email To Be Notified</div>
+
+			<div class="exit">&times;</div>
+
+			<div class="notify-info">
+				<strong>Event Name:</strong> App Club<br>
+				<strong>Time:</strong> 2:45 - 3:45 P.M.<br>
+				<strong>Location:</strong> Room 225
+			</div>
+
+			<div class="notify-label">
+				<input class="notify-input" type="email" placeholder="Email">
+				<button class="notify-button">Submit</button>
+			</div>
+		</ng-container>
+	</div>
+</body>
+</html>
