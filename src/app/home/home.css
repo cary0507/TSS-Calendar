@@ -1,133 +1,213 @@
+html body {
+  margin: -0.5rem;
+  margin-top: -2em;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #FFF3E1;
+}
+
 h1 {
-    text-align: center;
-    margin-top: 2rem;
+  text-align: center;
+  margin-top: 2em;
+  text-shadow: #3333338e 2px 2px 4px;
+}
 
-  }
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
 
-  .filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin: 2rem 0;
-
-  }
-
-  /* Buttons */
-  .filter {
-    padding: 0.6rem 1.4rem;
-    font-size: 0.85rem;
-    border-radius: 999px;
-    border: none;
-    cursor: pointer;
-    background: #d9c9b0;
-  }
-
-
-  /* Individual colors (from image) */
-  .filter.all {
-    background: #b48b5a;
-    color: white;
-  }
-
-  .filter.student {
-    background: #c9c3ff;
-    color: white;
-  }
-
-  .filter.clubs {
-    background: #f1c1cf;
-    color: white;
-  }
-
-  .filter.sports {
-    background: #3f336b;
-    color: white;
-  }
-
-  .filter.active {
-    background: #b48b5a;
-    color: white;
-  }
-  /* Day section */
-  .allDays h2 {
-    font-size: 1rem;
-    margin: 1.5rem 0 0.5rem;
-  }
-
-  /* Event card */
-  .event {
-    display: flex;
-    border-radius: 1.8rem;
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-
-  .event-info {
-    width: 65%;
-    padding: 1rem;
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+/* Buttons */
+.filter {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #d9c9b0;
+}
 
 
-  .event-info h3 {
-    margin-top: 0;
-    margin-bottom: 1.3rem;
-    margin-left: 2rem;
-    font-size: 1rem;
-  }
+/* Individual colors (from image) */
+.filter.all {
+  background: #AC7F5E;
+  color: white;
+}
+
+.filter.student {
+  background: #FF9D3C;
+  color: white;
+}
+
+.filter.clubs {
+  background: #FFD06B;
+  color: white;
+}
+
+.filter.sports {
+  background: #BFB2A2;
+  color: white;
+}
+
+.filter.active {
+  background: #b48b5a;
+  color: white;
+}
+
+.scrollable-container {
+  height: 30em;
+  max-height: auto;
+  overflow-y: auto; /* Adds a vertical scrollbar if content overflows */
+  overflow-x: hidden; /* Optional: hides horizontal scrollbar */
+  font-size: 1rem;
+
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+/* Event card */
+.event {
+  display: flex;
+  border-radius: 1.8rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.event-info {
+  width: 65%;
+  padding: 1rem;
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
 
-  .event-info p {
-    margin: 0 0 0.2rem 0;
-    margin-left: 0.3rem;
-    margin-bottom: 0.3rem;
-    font-size: 0.7rem;
-  }
-  /* Right image placeholder */
-  .event-img {
-    width: 35%;
-    background: repeating-conic-gradient(
-      #eee 0% 25%,
-      #ccc 0% 50%
-    );
-  }
-  .lined-title {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    gap: 0.5rem;
-  }
-  .lined-title::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background-color:black;
-  }
-
-  /* Colors */
-  .pink {
-    background: #f1c1cf;
-  }
-
-  .purple {
-    background: #4b3f72;
-  }
-  .icon-text {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.event-info h3 {
+  margin-top: 0;
+  margin-bottom: 1.3rem;
+  margin-left: 2rem;
+  font-size: 1rem;
+}
 
 
-  body {
-    background: #fff3e1;
+.event-info p {
+  margin: 0 0 0.2rem 0;
+  margin-left: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
+}
+
+/* Right image placeholder */
+.event-img {
+  width: 35%;
+  background: repeating-conic-gradient(#eee 0% 25%,
+      #ccc 0% 50%);
+}
+
+.lined-title {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  gap: 0.5rem;
+}
+
+.lined-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: black;
+}
+
+/* Colors */
+.pink {
+  background: #FFD06B;
+}
+
+.purple {
+  background: #BFB2A2;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* make font-awesome icons hollow with black outline */
+.icon-text i {
+  color: transparent;
+  -webkit-text-stroke: 1.5px black;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #e7c98b;
+  display: flex;
+  align-items: center;
+  padding: 0.8em 0;
+}
+
+.nav-item {
+  flex: 1; /* Makes items evenly spaced */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.nav-item p {
+  margin: 0.3em 0 0;
+}
+
+/* buttons for nav icons */
+.nav-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+}
+
+.nav-button:focus {
+  outline: 2px solid #333;
+  border-radius: 2px;
+}
+
+.material-icons {
+  font-size: 1em; /* scales with parent */
+}
+
+.icon-wrapper {
+  background: #f4b342;
+  padding: 0.6em;
+  border-radius: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active p {
+  font-weight: 600;
+}
+
+/* Slightly larger touch targets on bigger screens */
+@media (min-width: 48em) {
+  .bottom-nav {
+    padding: 1em 0;
   }
-  .allDays{
-    margin: 2rem;
+
+  .material-icons {
+    font-size: 1.8em;
   }
+}

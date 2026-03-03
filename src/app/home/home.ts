@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css',
+  preserveWhitespaces: false
 })
+
 export class Home {
 
 }
