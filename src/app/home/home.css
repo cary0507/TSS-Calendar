@@ -1,0 +1,133 @@
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+
+  }
+
+  /* Buttons */
+  .filter {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #d9c9b0;
+  }
+
+
+  /* Individual colors (from image) */
+  .filter.all {
+    background: #b48b5a;
+    color: white;
+  }
+
+  .filter.student {
+    background: #c9c3ff;
+    color: white;
+  }
+
+  .filter.clubs {
+    background: #f1c1cf;
+    color: white;
+  }
+
+  .filter.sports {
+    background: #3f336b;
+    color: white;
+  }
+
+  .filter.active {
+    background: #b48b5a;
+    color: white;
+  }
+  /* Day section */
+  .allDays h2 {
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  /* Event card */
+  .event {
+    display: flex;
+    border-radius: 1.8rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .event-info {
+    width: 65%;
+    padding: 1rem;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+
+  .event-info h3 {
+    margin-top: 0;
+    margin-bottom: 1.3rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+
+
+  .event-info p {
+    margin: 0 0 0.2rem 0;
+    margin-left: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.7rem;
+  }
+  /* Right image placeholder */
+  .event-img {
+    width: 35%;
+    background: repeating-conic-gradient(
+      #eee 0% 25%,
+      #ccc 0% 50%
+    );
+  }
+  .lined-title {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    gap: 0.5rem;
+  }
+  .lined-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color:black;
+  }
+
+  /* Colors */
+  .pink {
+    background: #f1c1cf;
+  }
+
+  .purple {
+    background: #4b3f72;
+  }
+  .icon-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+
+  body {
+    background: #fff3e1;
+  }
+  .allDays{
+    margin: 2rem;
+  }
