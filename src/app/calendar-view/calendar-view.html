@@ -1,0 +1,60 @@
+<div class="app-shell">
+    <nav class="filter-nav">
+      <button (click)="selectedFilter = 'All'" [class.active]="selectedFilter === 'All'" class="f-all">All</button>
+      <button (click)="selectedFilter = 'Students Life'" [class.active]="selectedFilter === 'Students Life'" class="f-life">Students Life</button>
+      <button (click)="selectedFilter = 'Clubs'" [class.active]="selectedFilter === 'Clubs'" class="f-clubs">Clubs</button>
+      <button (click)="selectedFilter = 'Sports'" [class.active]="selectedFilter === 'Sports'" class="f-sports">Sports</button>
+    </nav>
+  
+    <header class="cal-header">
+      <p class="txt-year">{{ displayYear }}</p>
+      <div class="month-nav">
+        <button (click)="changeMonth(-1)">❮</button>
+        <h1>{{ displayMonth + 1 }}</h1>
+        <button (click)="changeMonth(1)">❯</button>
+      </div>
+    </header>
+  
+    <main class="calendar-grid">
+      <div class="weekday-labels">
+        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+      </div>
+      <div class="days-container">
+        <div *ngFor="let p of gridPadding" class="cell empty"></div>
+        <div *ngFor="let day of daysInMonth" class="cell">
+          <span class="date-num">{{ day }}</span>
+          <div class="event-stack">
+            <div *ngFor="let ev of getEventsForDay(day)" 
+                 class="ev-bar" 
+                 [attr.data-filter]="ev.filter"
+                 [class.connect-prev]="ev.isPrevSame"
+                 [class.connect-next]="ev.isNextSame">
+              <span *ngIf="!ev.isPrevSame">{{ ev.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  
+    <section class="form-section">
+      <div class="form-card">
+        <div class="row">
+          <label>Date</label>
+          <input type="date" [(ngModel)]="newEvent.date">
+        </div>
+        <div class="row">
+          <label>Filter</label>
+          <select [(ngModel)]="newEvent.filter">
+            <option value="Students Life">Students Life</option>
+            <option value="Clubs">Clubs</option>
+            <option value="Sports">Sports</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Name</label>
+          <input type="text" [(ngModel)]="newEvent.name" placeholder="Event name">
+        </div>
+        <button class="btn-submit" (click)="addEvent()">+ Add Event</button>
+      </div>
+    </section>
+  </div>

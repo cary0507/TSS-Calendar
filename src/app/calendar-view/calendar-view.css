@@ -1,0 +1,114 @@
+:host {
+    --bg: #FFF3E1;
+    --all: #C19A6B;
+    --life: #D1B3E0;
+    --clubs: #FBC4AB;
+    --sports: #2E294E;
+  }
+  
+  .app-shell {
+    background-color: var(--bg);
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* 필터 스타일 */
+  .filter-nav { display: flex; gap: 8px; margin-bottom: 25px; }
+  .filter-nav button {
+    border: none; padding: 10px 14px; border-radius: 12px;
+    font-size: 11px; font-weight: 700; color: white; opacity: 0.5; transition: 0.3s;
+  }
+  .filter-nav button.active { opacity: 1; transform: translateY(-2px); }
+  .f-all { background: var(--all); }
+  .f-life { background: var(--life); }
+  .f-clubs { background: var(--clubs); }
+  .f-sports { background: var(--sports); }
+  
+  /* 헤더 */
+  .cal-header { text-align: center; margin-bottom: 20px; }
+  .txt-year { font-size: 14px; color: #8B7355; font-weight: 600; margin: 0; }
+  .month-nav { display: flex; justify-content: center; align-items: center; gap: 40px; }
+  .month-nav h1 { font-size: 48px; margin: 0; font-weight: 900; color: #4A3F35; }
+  .month-nav button { background: none; border: none; font-size: 20px; color: var(--all); }
+  
+  /* 균일한 캘린더 그리드 */
+  .calendar-grid {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(139, 115, 85, 0.1);
+    overflow: hidden;
+  }
+  
+  .weekday-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #fdfaf5;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #A08C78;
+  }
+  
+  .days-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .cell {
+    aspect-ratio: 1 / 1.4; /* 모든 칸의 사이즈를 균일하게 고정 */
+    border-right: 0.5px solid #F8F1E9;
+    border-bottom: 0.5px solid #F8F1E9;
+    padding: 6px 0; /* 좌우 패딩 제거 (연속성 위해) */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .date-num { font-size: 11px; font-weight: 700; color: #BCB4AD; margin-left: 8px; margin-bottom: 4px; }
+  
+  /* 이벤트 막대 (연속성 핵심 디자인) */
+  .event-stack { display: flex; flex-direction: column; gap: 3px; }
+  
+  .ev-bar {
+    font-size: 9px;
+    padding: 3px 6px;
+    color: white;
+    font-weight: 700;
+    white-space: nowrap;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    margin: 0 4px; /* 기본 마진 */
+    border-radius: 4px;
+  }
+  
+  /* 연속된 경우의 스타일 수정 */
+  .ev-bar.connect-prev {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .ev-bar.connect-next {
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .ev-bar[data-filter="Students Life"] { background: var(--life); }
+  .ev-bar[data-filter="Clubs"] { background: var(--clubs); }
+  .ev-bar[data-filter="Sports"] { background: var(--sports); }
+  
+  /* 폼 섹션 */
+  .form-section { margin-top: 30px; }
+  .form-card { background: white; padding: 20px; border-radius: 20px; border: 1px solid #F0E6D8; }
+  .row { display: flex; align-items: center; margin-bottom: 12px; }
+  .row label { width: 60px; font-size: 12px; font-weight: 800; }
+  .row input, .row select {
+    flex: 1; border: 1px solid #EEE; padding: 10px; border-radius: 10px; font-size: 13px; background: #FAFAFA;
+  }
+  .btn-submit {
+    width: 100%; padding: 15px; border: none; background: #4A3F35;
+    color: white; border-radius: 12px; font-weight: 800; cursor: pointer;
+  }
