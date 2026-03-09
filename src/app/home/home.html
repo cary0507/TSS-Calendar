@@ -18,12 +18,12 @@
     <button class="filter clubs">Clubs</button>
     <button class="filter sports">Sports</button>
   </div>
-  <div class="scrollable-container">
+  <div *ngFor"let event of events" class="scrollable-container" >
     <div class="day">
       <h2 class="lined-title">Dec 1</h2>
       <div class="event pink">
         <div class="event-info">
-          <h3 class="icon-text"><i class="fa-solid fa-bell"></i>App Club</h3>
+          <h3 class="icon-text"><i class="fa-solid fa-bell"></i>{{ event.name }} </h3>
           <p class="icon-text"><i class="fa-solid fa-clock"></i>2:40–4:00</p>
           <p class="icon-text"><i class="fa-solid fa-location-dot"></i>Room 225</p>
         </div>
