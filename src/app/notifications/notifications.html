@@ -38,8 +38,8 @@
 			</div>
 
 			<div class="notify-label">
-				<input class="notify-input" type="email" placeholder="Email">
-				<button class="notify-button">Submit</button>
+				<input class="notify-input" type="email" placeholder="Email" [(ngModel)]="enteredEmail">
+				<button class="notify-button" (click)="toSendEmail()">Submit</button>
 			</div>
 		</ng-container>
 	</div>

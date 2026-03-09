@@ -10,7 +10,9 @@ import {catchError, throwError} from "rxjs";
   providedIn: 'root',
 })
 export class MainService {
-  
+  private apiUrl = 'Nothing yet';
+
+  constructor(private http: HttpClient) {}
 
   async getAllEvents() {
     try {
@@ -27,9 +29,39 @@ export class MainService {
           return users;
       }
       return [];
-  } catch (error: any) {
+    } catch (error: any) {
       console.error('HomeService error fetching users:', error);
       return [];
+    }
   }
+
+  async getEventByID(id: string) {
+    try {
+      const eventRef = doc(db, 'events', id);
+      const eventDoc = await getDoc(eventRef);
+      if (eventDoc.exists()) {
+        return { id: eventDoc.id, ...eventDoc.data() };
+      } else {
+        console.warn(`Event with ID ${id} not found.`);
+        return null;
+      }
+    } catch (error: any) {
+      console.error('HomeService error fetching event:', error);
+      return null;
+    }
+  }
+
+  sendEmail(email: string) {
+    /**
+     * Sends an email to the specified address with the given time.
+     */
+    const data = { email, };
+    // Implementation for sending email
+    return this.http.post(`${this.apiUrl}/send-email`, data).pipe(
+      catchError((error) => {
+        console.error('Error sending email:', error);
+        return throwError(() => new Error('Failed to send email. Please try again later.'));
+      })
+    );
   }
 }
