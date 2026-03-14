@@ -59,12 +59,11 @@ h1 {
 }
 
 .scrollable-container {
-  height: 30em;
+  height: 50em;
   max-height: auto;
   overflow-y: auto; /* Adds a vertical scrollbar if content overflows */
   overflow-x: hidden; /* Optional: hides horizontal scrollbar */
   font-size: 1rem;
-
   margin-left: 2em;
   margin-right: 2em;
 }

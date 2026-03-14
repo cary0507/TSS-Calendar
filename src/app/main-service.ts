@@ -14,28 +14,7 @@ export class MainService {
 
   constructor(private http: HttpClient) {}
 
-  // Get ALL 
-  async getAllEvents() {
-    try {
-      const eventsRef = collection(db, 'events');
-      const q = query(eventsRef, orderBy('date', 'desc'));
-
-      const querySnapshot = await getDocs(q);
-      const users: any[] = [];
-
-      if (!querySnapshot.empty) {
-          querySnapshot.forEach((doc) => {
-              users.push({ id: doc.id, ...doc.data() });
-          });
-          return users;
-      }
-      return [];
-    } catch (error: any) {
-      console.error('HomeService error fetching users:', error);
-      return [];
-    }
-  }
-
+  // function for sending email
   sendEmail(email: string) {
     /**
      * Sends an email to the specified address with the given time.
