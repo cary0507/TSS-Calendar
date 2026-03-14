@@ -10,7 +10,7 @@
       <p class="txt-year">{{ displayYear }}</p>
       <div class="month-nav">
         <button (click)="changeMonth(-1)">❮</button>
-        <h1>{{ displayMonth + 1 }}</h1>
+        <h1>{{ displayMonthName }}</h1>
         <button (click)="changeMonth(1)">❯</button>
       </div>
     </header>
@@ -35,26 +35,4 @@
         </div>
       </div>
     </main>
-  
-    <section class="form-section">
-      <div class="form-card">
-        <div class="row">
-          <label>Date</label>
-          <input type="date" [(ngModel)]="newEvent.date">
-        </div>
-        <div class="row">
-          <label>Filter</label>
-          <select [(ngModel)]="newEvent.filter">
-            <option value="Students Life">Students Life</option>
-            <option value="Clubs">Clubs</option>
-            <option value="Sports">Sports</option>
-          </select>
-        </div>
-        <div class="row">
-          <label>Name</label>
-          <input type="text" [(ngModel)]="newEvent.name" placeholder="Event name">
-        </div>
-        <button class="btn-submit" (click)="addEvent()">+ Add Event</button>
-      </div>
-    </section>
   </div>

@@ -19,7 +19,12 @@ interface CalendarEvent {
 export class CalendarView implements OnInit {
   viewDate = new Date();
   displayYear = this.viewDate.getFullYear();
-  displayMonth = this.viewDate.getMonth();
+  displayMonth = this.viewDate.getMonth(); // 0–11 for date logic
+
+  private monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  get displayMonthName(): string {
+    return this.monthNames[this.displayMonth];
+  }
 
   selectedFilter = 'All';
   events: CalendarEvent[] = [
@@ -32,7 +37,9 @@ export class CalendarView implements OnInit {
   daysInMonth: number[] = [];
   gridPadding: number[] = [];
 
-  ngOnInit() { this.generateCalendar(); }
+  ngOnInit() {
+    this.generateCalendar();
+  }
 
   generateCalendar() {
     const firstDay = new Date(this.displayYear, this.displayMonth, 1).getDay();

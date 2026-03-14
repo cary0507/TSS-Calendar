@@ -6,7 +6,8 @@ import { Notifications } from './notifications/notifications';
 
 export const routes: Routes = [
     {path: '', component: Home},
-    {path: 'event-details', component: EventDetails},
+    {path: 'home', component: Home},
+    {path: 'home/:event', component: EventDetails},
     {path: 'calendar-view', component: CalendarView},
     {path: 'notifications', component: Notifications}
 ];

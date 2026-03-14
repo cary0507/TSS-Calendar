@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from '../main-service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +8,6 @@ import { MainService } from '../main-service';
   preserveWhitespaces: false
 })
 
-export class Home implements OnInit {
+export class Home {
 
-  events: any
-  constructor(private mainService : MainService) {
-
-
-    async ngOnInit() {
-      this.events = this.mainService.getAllEvents()
-    }
-  }
 }

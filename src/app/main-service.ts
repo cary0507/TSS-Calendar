@@ -14,6 +14,7 @@ export class MainService {
 
   constructor(private http: HttpClient) {}
 
+  // Get ALL 
   async getAllEvents() {
     try {
       const eventsRef = collection(db, 'events');
@@ -35,22 +36,6 @@ export class MainService {
     }
   }
 
-  async getEventByID(id: string) {
-    try {
-      const eventRef = doc(db, 'events', id);
-      const eventDoc = await getDoc(eventRef);
-      if (eventDoc.exists()) {
-        return { id: eventDoc.id, ...eventDoc.data() };
-      } else {
-        console.warn(`Event with ID ${id} not found.`);
-        return null;
-      }
-    } catch (error: any) {
-      console.error('HomeService error fetching event:', error);
-      return null;
-    }
-  }
-
   sendEmail(email: string) {
     /**
      * Sends an email to the specified address with the given time.
@@ -64,4 +49,74 @@ export class MainService {
       })
     );
   }
+
+  // Getting a specific event
+  async getEvent(id: string) {
+    const docRef = doc(db, "events", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      if (data?.["status"] === "approved") {
+        return { id: docSnap.id, ...data };
+      }
+    }
+    return null;
+  }
+
+
+  async getEvents(currentDate: string, category?: string) {
+    try {
+  
+      const eventsRef = collection(db, 'events');
+      let q;
+  
+  
+      // filter be category and date
+      if (category) {
+        q = query(
+          eventsRef,
+          where('category', '==', category),
+        where('status', '==', 'approved'),
+          where('date', '>', currentDate),
+          orderBy('date', 'asc') // by date
+        );
+      }
+  
+  
+      else {
+        q = query(
+          eventsRef,
+          where('date', '>', currentDate),
+       where('status', '==', 'approved'),
+          orderBy('date', 'asc')
+        );
+      }
+  
+  
+      const querySnapshot = await getDocs(q);
+  
+  
+      // returs array
+      if (!querySnapshot.empty) {
+        return {
+          events: querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+          }))
+        };
+      }
+  
+      // if no events, returs null
+      return { events: null };
+  
+  
+    } catch (error: any) {
+      console.error('Error fetching events:', error);
+  
+  
+      return { events: null };
+    }
+  }
+  
 }
