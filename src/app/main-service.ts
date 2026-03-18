@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {db} from '../environments/environment.prod'
-import {collection, doc, getDoc, getDocs, limit, orderBy, query, startAfter, updateDoc, where} from 'firebase/firestore';
+import {collection, doc, getDoc, getDocs, limit, orderBy, query, setDoc, startAfter, updateDoc, where} from 'firebase/firestore';
 import {getAuth} from "firebase/auth";
 import {catchError, throwError} from "rxjs";
+
 
 
 @Injectable({
@@ -41,6 +42,13 @@ export class MainService {
       }
     }
     return null;
+  }
+
+
+  async saveEmail(email: any) {
+    await setDoc(doc(db, "emails", `${email}`), {
+      email: email
+    })
   }
 
 

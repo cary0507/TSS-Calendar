@@ -1,0 +1,119 @@
+<div class="waitlist-screen">
+  <div class="wl-inner">
+  <header class="wl-header">
+    <div class="chip-row">
+      <span class="chip chip-active">All</span>
+      <span class="chip">Clubs</span>
+      <span class="chip">Sports</span>
+      <span class="chip">Spirit</span>
+    </div>
+
+    <div class="hero-copy">
+      <p class="hero-kicker">School Events · TSS</p>
+      <h1>Never miss another event.</h1>
+      <p class="hero-subtitle">
+        Every club, game, and spirit day at Thornhill,
+        organized into one clean calendar made for students.
+      </p>
+    </div>
+  </header>
+
+  <main class="wl-main">
+    <section class="waitlist-card" aria-labelledby="waitlist-title">
+      <div class="card-top">
+        <span class="pill pill-soon">Coming soon</span>
+        <p class="card-title" id="waitlist-title">Get early access to TSS Calendar</p>
+        <p class="card-caption">
+          Hop on the list and we&rsquo;ll email you the app as soon as it&rsquo;s live.
+        </p>
+      </div>
+
+      <form
+        *ngIf="!submitted"
+        class="waitlist-form"
+        id="waitlistForm"
+        novalidate
+        (ngSubmit)="submitEmail()"
+      >
+        <label class="field-label" for="userEmail">School email</label>
+        <div class="field-row">
+          <input
+            type="email"
+            id="userEmail"
+            inputmode="email"
+            autocomplete="email"
+            placeholder="you@gapps.yrdsb.ca"
+            name="email"
+            [(ngModel)]="email"
+            required
+          />
+          <button type="submit">Join waitlist</button>
+        </div>
+        <p class="helper-text">No spam. Only launch updates and big new features.</p>
+      </form>
+
+      <div *ngIf="submitted" class="thank-you-state">
+        <p class="thank-title">You&rsquo;re on the list 🎉</p>
+        <p class="thank-body">
+          Thanks for signing up! We&rsquo;ll email you as soon as TSS Calendar is live,
+          plus a first look at new features we&rsquo;re building with students.
+        </p>
+        <p class="thank-sub">
+          In the meantime, keep an eye on <a href="https://www.instagram.com/appclub.tss/" target="_blank">@appclub.tss</a>
+          for behind‑the‑scenes updates.
+        </p>
+      </div>
+
+      <div class="social-proof">
+        <div class="avatar-row" aria-label="Students who joined the waitlist">
+          <img
+            class="avatar"
+            src="https://images.unsplash.com/photo-1563823251941-b9989d1e8d97?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Student who joined the TSS Calendar waitlist"
+          />
+          <img
+            class="avatar"
+            src="https://images.unsplash.com/vector-1758119998407-9bd510cead8c?q=80&w=999&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Student who joined the TSS Calendar waitlist"
+          />
+          <img
+            class="avatar"
+            src="https://images.unsplash.com/vector-1760064569190-a79421e943ba?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Student who joined the TSS Calendar waitlist"
+          />
+        </div>
+        <p class="social-copy">
+          Students are already joining from App Club, sports, and more.
+        </p>
+      </div>
+    </section>
+
+    <section class="preview-strip" aria-label="Preview of the app">
+      <h2 class="preview-title">A quick peek</h2>
+      <div class="preview-cards">
+        <article class="preview-card pc-clubs">
+          <p class="pc-tag">Clubs</p>
+          <p class="pc-name">App Club</p>
+          <p class="pc-meta">Mondays &middot; 2:45 &ndash; 4:00</p>
+        </article>
+
+        <article class="preview-card pc-sports">
+          <p class="pc-tag">Sports</p>
+          <p class="pc-name">Volleyball Practice</p>
+          <p class="pc-meta">Thu &middot; After school</p>
+        </article>
+
+        <article class="preview-card pc-spirit">
+          <p class="pc-tag">Spirit</p>
+          <p class="pc-name">Spirit Week</p>
+          <p class="pc-meta">Next week &middot; Atrium</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+    <p class="brand-line">
+      Built by <strong>App Club</strong> &bull; <a href="https://www.instagram.com/appclub.tss/" target="_blank">@appclub.tss</a>
+    </p>
+  </div>
+</div>

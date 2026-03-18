@@ -3,9 +3,10 @@ import { Home } from './home/home';
 import { EventDetails } from './event-details/event-details';
 import { CalendarView } from './calendar-view/calendar-view';
 import { Notifications } from './notifications/notifications';
+import { Waitlist } from './waitlist/waitlist';
 
 export const routes: Routes = [
-    {path: '', component: Home},
+    {path: '', component: Waitlist},
     {path: 'home', component: Home},
     {path: 'home/:event', component: EventDetails},
     {path: 'calendar-view', component: CalendarView},
