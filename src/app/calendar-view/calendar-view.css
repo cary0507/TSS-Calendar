@@ -3,6 +3,7 @@
     --all: #AC7F5E;
     --life: #FF9D3C;
     --clubs: #FFD06B;
+    --academics: #A5C9D9;
     --sports: #BFB2A2;
   }
   
@@ -11,6 +12,7 @@
     min-height: 100vh;
     padding: 20px;
     font-family: 'Inter', sans-serif;
+    margin-top: 1em;
   }
   
   /* 필터 스타일 */
@@ -24,6 +26,7 @@
   .f-life { background: var(--life); }
   .f-clubs { background: var(--clubs); }
   .f-sports { background: var(--sports); }
+  .f-academics { background: var(--academics); }
   
   /* 헤더 */
   .cal-header { text-align: center; margin-bottom: 20px; }
@@ -54,6 +57,73 @@
   .days-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+  }
+
+  /* Ensure calendar maintains 7 columns on mobile */
+  @media (max-width: 768px) {
+    .calendar-grid {
+      width: 100%;
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+    
+    .weekday-labels {
+      grid-template-columns: repeat(7, 1fr) !important;
+      min-width: 350px; /* Minimum width to maintain 7 columns */
+      font-size: 10px;
+      padding: 8px 0;
+    }
+    
+    .days-container {
+      grid-template-columns: repeat(7, 1fr) !important;
+      min-width: 350px; /* Minimum width to maintain 7 columns */
+    }
+    
+    .cell {
+      aspect-ratio: 1 / 1.2;
+      padding: 4px 0;
+      min-width: 50px; /* Ensure each cell has minimum width */
+    }
+    
+    .date-num {
+      font-size: 9px;
+      margin-left: 4px;
+      margin-bottom: 2px;
+    }
+    
+    .ev-bar {
+      font-size: 7px;
+      padding: 2px 4px;
+      height: 12px;
+    }
+  }
+  
+  /* Additional mobile-specific styles */
+  @media (max-width: 480px) {
+    .app-shell {
+      padding: 10px;
+    }
+    
+    .weekday-labels {
+      font-size: 9px;
+      padding: 6px 0;
+      min-width: 280px;
+    }
+    
+    .cell {
+      min-width: 40px;
+      padding: 2px 0;
+    }
+    
+    .date-num {
+      font-size: 8px;
+      margin-left: 2px;
+    }
+    
+    .ev-bar {
+      font-size: 6px;
+      padding: 1px 2px;
+      height: 10px;
+    }
   }
   
   .cell {
@@ -95,10 +165,102 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-bottom: -0.5em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item.active {
+    transform: scale(1); /* Subtle scale effect */
+}
+
+.navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFE3A8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 7;
+}
+
+
+.icon-wrapper {
+  background: transparent;
+  padding: 0.25rem;
+  border-radius: 12px;
+  margin-bottom: -0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.material-icons {
+  font-size: 1.5rem;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.nav-label {
+  font-size: 0.7rem;
+  color: #666;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-top: 2px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Active state */
+.nav-item.active .icon-wrapper {
+  border: 2px solid #FFA500;
+  transform: scale(1.05);
+}
+
+.nav-item.active .material-icons {
+  color: #FFA500;
+}
+
+.nav-item.active .nav-label {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Hover states */
+.nav-item:hover .icon-wrapper {
+  background: rgba(244, 179, 66, 0.1);
+}
+
+.nav-item:hover .material-icons {
+  color: #555;
+}
+
+.nav-item:hover .nav-label {
+  color: #555;
+}
+
+
+  .ev-bar[data-category="StudentLife"] { background: var(--life); }
+  .ev-bar[data-category="Academics"] { background: var(--academics); }
+  .ev-bar[data-category="Clubs"] { background: var(--clubs); }
+  .ev-bar[data-category="Sports"] { background: var(--sports); }
   
-  .ev-bar[data-filter="Students Life"] { background: var(--life); }
-  .ev-bar[data-filter="Clubs"] { background: var(--clubs); }
-  .ev-bar[data-filter="Sports"] { background: var(--sports); }
+  /* Default background for events with no matching category */
+  .ev-bar { background: var(--all); }
   
   /* 폼 섹션 */
   .form-section { margin-top: 30px; }

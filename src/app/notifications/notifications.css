@@ -1,5 +1,7 @@
 body {
-    background: transparent
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+
 }
 
 .notify-box {
@@ -8,10 +10,11 @@ body {
     background: #F4A046;
     color: black;
     padding: 2em;
-    border-radius: 0.5em;
+    border-radius: 2em;
     box-shadow: 0 0.25em 1em rgba(0, 0, 0, 0.25);
     animation: fadeIn 0.4s ease-out;
     position: relative;
+    font-family: 'Inter', sans-serif;
 }
 
 @keyframes fadeIn {
@@ -56,22 +59,28 @@ body {
     text-align: center;
     margin-bottom: 1.375em;
     letter-spacing: 0.02em;
+    font-family: 'Inter', sans-serif;
 }
 
 .notify-info {
     font-size: 0.9em;
-    margin-bottom: 1.5em;
-  	margin-left: 0.5em
+    margin-top: 3em;
+    margin-bottom: 2.5em;
+  	margin-left: 0.5em;
+    font-family: 'Inter', sans-serif;
+
 }
 
 .notify-info strong {
     font-weight: 600;
+    font-family: 'Inter', sans-serif;
 }
 
 .notify-label {
     font-size: 1.125em;
     margin-bottom: 0.5em;
     font-weight: 600;
+    font-family: 'Inter', sans-serif;
 }
 
 .notify-input {
@@ -89,8 +98,8 @@ body {
 
     color: black;
     outline: none;
-    text-align: left;
-
+    text-align: left;    
+    font-family: 'Inter', sans-serif;
     transition: border-color 0.25s ease;
 }
 
@@ -109,6 +118,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Inter', sans-serif;
 }
 
 .notify-button:hover {
@@ -124,21 +134,24 @@ body {
     align-items: center;
   	justify-content: center;
   	font-size: 20px;
-  	padding-left: 1em;
-  	padding-right: 1em;
   	padding-top: 0.25em;
   	padding-bottom: 0.25em;
   	border: none;
   	border-radius: 0.75em;
-    gap: 2em
+    gap: 2em;
+    font-family: 'Inter', sans-serif;
+    margin-top: 1em;
+    width: 12em;
 }
 
 .btn.no {
   background: #E88B8B;
+  width: 23em;
 }
 
 .btn.yes {
   background: #A6E39A;
+  width: 23em;
 }
 
 .btn button:hover {
@@ -149,3 +162,14 @@ body {
     transform: scale(0.97);
 }
 
+.error-message {
+    color: #d32f2f;
+    font-size: 0.875em;
+    margin-top: 0.5em;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.is-invalid {
+    border-color: #d32f2f !important;
+}

@@ -39,9 +39,10 @@
         </svg>
       </button>
       <span class="badge" [ngClass]="{
-        'style-student': eventData.category === 'Student Life',
+        'style-student': eventData.category === 'StudentLife',
         'style-clubs': eventData.category === 'Clubs',
-        'style-sports': eventData.category === 'Sports'
+        'style-sports': eventData.category === 'Sports',
+        'style-academic': eventData.category === 'Academics'
       }">{{ eventData.category }}</span>
       <div class="header-spacer"></div>
     </header>
@@ -49,7 +50,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-      <img class="event-image" src="https://images.unsplash.com/photo-1565687981296-535f09db714e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+      <img class="event-image" [src]="eventData.image"/>
     </section>
 
 
@@ -78,7 +79,7 @@
             <span class="info-label">Date &amp; Time</span>
             <span class="info-value">{{ eventData.date  | date: 'MMM d, yyyy'}}</span>
             <span class="info-sub">
-              {{ '1970-01-01T' + eventData.time | date: 'shortTime' }}
+              {{ eventData.startTime }} - {{ eventData.endTime || 'End Time Not Specified' }}
             </span>
           </div>
         </div>
@@ -94,7 +95,7 @@
           </div>
           <div class="info-text">
             <span class="info-label">Location</span>
-            <span class="info-value">Room 123</span>
+            <span class="info-value">{{ eventData.location }}</span>
           </div>
         </div>
 
@@ -136,7 +137,7 @@
           Actions
         </h2>
         <div class="section-box">
-          <p class="empty-text">No actions required</p>
+          <p>{{ eventData.actionRequired }}</p>
         </div>
       </div>
     </main>

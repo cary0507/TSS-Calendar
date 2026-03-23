@@ -1,47 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Notification Box</title>
-
-</head>
-<body>
+<!--Show the option to register/login to an account when click on the notification button-->
+<ng-container *ngIf="confirmPopup">
 	<div class="notify-box">
-		<!--Show the option to register/login to an account when click on the notification button-->
-		<ng-container>
-			<div class="notify-box">
-				<span class="exit">&times;</span>
-				
-				<h2 class=notify-title>Would you like to be notified for this event?</h2>
+		<span class="exit" (click)="confirmPopup = false">&times;</span>
+		
+		<h2 class="notify-title">Would you like to be notified for this event?</h2>
 
-				<div class="notify-info">
-				<p><strong>Event Name:</strong> App Club</p>
-				<p><strong>Time:</strong> 2:45 - 3:45 P.M.</p>
-				<p><strong>Location:</strong> Room 225</p>
-				</div>
-				<div class="btn">
-				<button class="btn no">No</button>
-				<button class="btn yes">Yes</button>
-			</div>
+		<div class="notify-info">
+			<p><strong>Event Name:</strong> {{ eventData?.name || 'Loading...' }}</p>
+			<p><strong>Time:</strong> {{ eventData?.time || 'Loading...' }}</p>
+			<p><strong>Location:</strong> {{ eventData?.location || 'Loading...' }}</p>
 		</div>
-		</ng-container>
-		<!--Show the option to enter email to be notified when click on the notification button-->
-		<ng-container>
+		<div class="btn">
+			<button class="btn no" (click)="confirmPopup = false">No</button>
+			<button class="btn yes" (click)="onConfirm()">Yes</button>
+		</div>
+	</div>
+</ng-container>
+
+
+
+
+<!--Show the option to enter email to be notified when click on the notification button-->
+<ng-container *ngIf="emailEnter">
+	<form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm)">
+		<div class="notify-box">
 			<div class="notify-title">Enter Your Email To Be Notified</div>
 
-			<div class="exit">&times;</div>
+			<span class="exit" (click)="emailEnter = false">&times;</span>
 
 			<div class="notify-info">
-				<strong>Event Name:</strong> App Club<br>
-				<strong>Time:</strong> 2:45 - 3:45 P.M.<br>
-				<strong>Location:</strong> Room 225
+				<strong>Event Name:</strong> {{ eventData?.name || 'Loading...' }}<br>
+				<strong>Time:</strong> {{ eventData?.time || 'Loading...' }}<br>
+				<strong>Location:</strong> {{ eventData?.location || 'Loading...' }}
 			</div>
-
 			<div class="notify-label">
-				<input class="notify-input" type="email" placeholder="Email" [(ngModel)]="enteredEmail">
-				<button class="notify-button" (click)="toSendEmail()">Submit</button>
+				<input id="email"
+				class="notify-input"
+				type="email"
+				placeholder="Email"
+				required
+				[(ngModel)]="email"
+				name="email"
+				#emailInput
+				[class.is-invalid]="formErrors.email">
+				<button class="notify-button" type="submit">Submit</button>
 			</div>
-		</ng-container>
-	</div>
-</body>
-</html>
+			<div *ngIf="formErrors.email" class="error-message">
+				{{ formErrors.email }}
+			</div>
+		</div>
+	</form>
+</ng-container>

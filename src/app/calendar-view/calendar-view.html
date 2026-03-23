@@ -1,9 +1,10 @@
 <div class="app-shell">
     <nav class="filter-nav">
-      <button (click)="selectedFilter = 'All'" [class.active]="selectedFilter === 'All'" class="f-all">All</button>
-      <button (click)="selectedFilter = 'Students Life'" [class.active]="selectedFilter === 'Students Life'" class="f-life">Students Life</button>
-      <button (click)="selectedFilter = 'Clubs'" [class.active]="selectedFilter === 'Clubs'" class="f-clubs">Clubs</button>
-      <button (click)="selectedFilter = 'Sports'" [class.active]="selectedFilter === 'Sports'" class="f-sports">Sports</button>
+      <button (click)="selectedCategory = 'All'" [class.active]="selectedCategory === 'All'" class="f-all">All</button>
+      <button (click)="selectedCategory = 'Students Life'" [class.active]="selectedCategory === 'Students Life'" class="f-life">Students Life</button>
+      <button (click)="selectedCategory = 'Academics'" [class.active]="selectedCategory === 'Academics'" class="f-academics">Academics</button>
+      <button (click)="selectedCategory = 'Clubs'" [class.active]="selectedCategory === 'Clubs'" class="f-clubs">Clubs</button>
+      <button (click)="selectedCategory = 'Sports'" [class.active]="selectedCategory === 'Sports'" class="f-sports">Sports</button>
     </nav>
   
     <header class="cal-header">
@@ -26,13 +27,30 @@
           <div class="event-stack">
             <div *ngFor="let ev of getEventsForDay(day)" 
                  class="ev-bar" 
-                 [attr.data-filter]="ev.filter"
+                 [attr.data-category]="ev.category"
                  [class.connect-prev]="ev.isPrevSame"
                  [class.connect-next]="ev.isNextSame">
-              <span *ngIf="!ev.isPrevSame">{{ ev.name }}</span>
+              <span (click)="goToEventDetails(ev.id)" *ngIf="!ev.isPrevSame">{{ ev.title }}</span>
             </div>
           </div>
         </div>
       </div>
     </main>
-  </div>
+
+
+    <div class="navigation">
+  <a routerLink="/home" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+    <div class="icon-wrapper">
+      <span class="material-icons">home</span>
+    </div>
+    <p>Home</p>
+  </a>
+
+  <a routerLink="/calendar" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+    <div class="icon-wrapper">
+      <span class="material-icons">calendar_today</span>
+    </div>
+    <p>Calendar</p>
+  </a>
+</div>
+</div>

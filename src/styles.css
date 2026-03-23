@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF3E1 !important;
+}
+
+app-home {
+  display: block;
+  background-color: #FFF3E1 !important;
+  min-height: 100vh;
+}
