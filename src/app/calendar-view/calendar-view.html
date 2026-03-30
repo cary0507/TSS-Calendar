@@ -22,7 +22,7 @@
       </div>
       <div class="days-container">
         <div *ngFor="let p of gridPadding" class="cell empty"></div>
-        <div *ngFor="let day of daysInMonth" class="cell">
+        <div *ngFor="let day of daysInMonth" class="cell" [class.today]="isToday(day)">
           <span class="date-num">{{ day }}</span>
           <div class="event-stack">
             <div *ngFor="let ev of getEventsForDay(day)" 
