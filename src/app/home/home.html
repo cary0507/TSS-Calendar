@@ -1,50 +1,66 @@
-<h1 class="title">School Events</h1>
+<div class="page-wrapper">
+  <h1 class="title">School Events</h1>
 
-<div class="filters">
-  <button (click)="selectedCategory = 'all'" [class.active]="selectedCategory === 'all'" class="filter all">All</button>
-  <button (click)="selectedCategory = 'student'" [class.active]="selectedCategory === 'student'" class="filter student">Student Life</button>
-  <button (click)="selectedCategory = 'academic'" [class.active]="selectedCategory === 'academic'" class="filter academic">Academic</button>
-  <button (click)="selectedCategory = 'clubs'" [class.active]="selectedCategory === 'clubs'" class="filter clubs">Clubs</button>
-  <button (click)="selectedCategory = 'sports'" [class.active]="selectedCategory === 'sports'" class="filter sports">Sports</button>
-</div>
+  <div class="filters-container">
+    <div class="filters">
+      <button (click)="selectedCategory = 'all'" [class.active]="selectedCategory === 'all'" class="filter all">All</button>
+      <button (click)="selectedCategory = 'student'" [class.active]="selectedCategory === 'student'" class="filter student">Student Life</button>
+      <button (click)="selectedCategory = 'academic'" [class.active]="selectedCategory === 'academic'" class="filter academic">Academic</button>
+      <button (click)="selectedCategory = 'clubs'" [class.active]="selectedCategory === 'clubs'" class="filter clubs">Clubs</button>
+      <button (click)="selectedCategory = 'sports'" [class.active]="selectedCategory === 'sports'" class="filter sports">Sports</button>
+    </div>
+  </div>
 
-<div class="scrollable-container">
-  <ng-container *ngFor="let dateGroup of groupedEvents | keyvalue">
-    <div class="day">
-      <h2 class="lined-title">{{ formatMonthDate(dateGroup.key) }}</h2>
-      <div
-        class="event {{ getEventCardClass(event) }}"
-        *ngFor="let event of dateGroup.value"
-        (click)="goToEventDetails(event.id)"
-      >
-        <div class="event-info">
-          <h3 class="icon-text">
-            <i class="fa-solid fa-bell"></i>{{ event.title }}
-          </h3>
-          <p class="icon-text"><i class="fa-solid fa-clock"></i>{{ formatEventTime(event) }}</p>
-          <p class="icon-text">
-            <i class="fa-solid fa-location-dot"></i>{{ event.location }}
-          </p>
+  <div class="scrollable-container">
+    <ng-container *ngFor="let dateGroup of groupedEvents | keyvalue">
+      <div class="day-section">
+        <h2 class="lined-title"><span>{{ formatMonthDate(dateGroup.key) }}</span></h2>
+        
+        <div class="event-grid">
+          <div
+            class="event-card {{ getEventCardClass(event) }}"
+            *ngFor="let event of dateGroup.value"
+            (click)="goToEventDetails(event.id)"
+          >
+            <div class="event-content">
+              <div class="event-info">
+                <h3 class="event-name">
+                  <i class="fa-solid fa-bell"></i>{{ event.title }}
+                </h3>
+                <div class="meta-info">
+                  <p class="icon-text"><i class="fa-solid fa-clock"></i>{{ formatEventTime(event) }}</p>
+                  <p class="icon-text"><i class="fa-solid fa-location-dot"></i>{{ event.location }}</p>
+                </div>
+              </div>
+              <div class="event-image-wrapper">
+                <img [src]="event.image" class="event-img" alt="event image" />
+                <div class="category-tag"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <img [src]="event.image" class="event-img" />
       </div>
+    </ng-container>
+    
+    <div *ngIf="!events.length" class="empty-state">
+      <span class="material-icons">event_busy</span>
+      <p>No approved events to show.</p>
     </div>
-  </ng-container>
-  <p *ngIf="!events.length" class="no-events">No approved events to show.</p>
-</div>
+  </div>
 
-<div class="navigation">
-  <a routerLink="/home" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
-    <div class="icon-wrapper">
-      <span class="material-icons">home</span>
-    </div>
-    <p>Home</p>
-  </a>
+  <nav class="navigation">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+      <div class="icon-box">
+        <span class="material-icons">home</span>
+      </div>
+      <span class="nav-label">Home</span>
+    </a>
 
-  <a routerLink="/calendar" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
-    <div class="icon-wrapper">
-      <span class="material-icons">calendar_today</span>
-    </div>
-    <p>Calendar</p>
-  </a>
+    <a routerLink="/calendar" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+      <div class="icon-box">
+        <span class="material-icons">calendar_today</span>
+      </div>
+      <span class="nav-label">Calendar</span>
+    </a>
+  </nav>
 </div>
