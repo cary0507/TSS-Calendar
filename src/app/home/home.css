@@ -191,7 +191,7 @@ h1.title {
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-around;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   z-index: 100;
@@ -207,7 +207,7 @@ h1.title {
 }
 
 .icon-box {
-  padding: 4px 16px;
+  padding: 2px 12px;
   border-radius: 15px;
   transition: all 0.3s ease;
 }
@@ -216,9 +216,9 @@ h1.title {
 .nav-item.active .icon-box { background: rgba(255, 157, 60, 0.1); }
 
 .nav-label {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 /* 데이터 없음 상태 */
