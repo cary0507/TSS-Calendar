@@ -228,43 +228,47 @@
   transition: all 0.2s ease;
 }
 
+.navigation {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #888;
+  transition: all 0.3s ease;
+}
+
+.icon-box {
+  padding: 2px 12px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active { color: #FF9D3C; }
+.nav-item.active .icon-box { background: rgba(255, 157, 60, 0.1); }
+
 .nav-label {
   font-size: 0.6rem;
-  color: #666;
-  font-weight: 400;
-  transition: all 0.2s ease;
-  text-align: center;
-  margin-top: 0.2em;
-  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-top: 2px;
 }
 
-/* Active state */
-.nav-item.active .icon-wrapper {
-  border: 2px solid #FFA500;
-  transform: scale(1.05);
-}
-
-.nav-item.active .material-icons {
-  color: #FFA500;
-}
-
-.nav-item.active .nav-label {
-  color: #333;
-  font-weight: 500;
-}
-
-/* Hover states */
-.nav-item:hover .icon-wrapper {
-  background: rgba(244, 179, 66, 0.1);
-}
-
-.nav-item:hover .material-icons {
-  color: #555;
-}
-
-.nav-item:hover .nav-label {
-  color: #555;
-}
 
 
   .ev-bar[data-category="StudentLife"] { background: var(--life); }
