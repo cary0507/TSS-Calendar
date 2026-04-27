@@ -136,6 +136,19 @@
   }
   
   .date-num { font-size: 11px; font-weight: 700; color: #BCB4AD; margin-left: 8px; margin-bottom: 4px; }
+  .cell.today .date-num {
+    color: #1D4ED8;
+    background: rgba(59, 130, 246, 0.12);
+    border: 2px solid #3B82F6;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    margin-bottom: 6px;
+  }
   
   /* 이벤트 막대 (연속성 핵심 디자인) */
   .event-stack { display: flex; flex-direction: column; gap: 3px; }
@@ -192,7 +205,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 12px 0;
+    padding: 0.2em 0;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     z-index: 7;
 }
@@ -200,7 +213,7 @@
 
 .icon-wrapper {
   background: transparent;
-  padding: 0.25rem;
+  padding: 0.15rem;
   border-radius: 12px;
   margin-bottom: -0.5em;
   display: flex;
@@ -210,48 +223,52 @@
 }
 
 .material-icons {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #333;
   transition: all 0.2s ease;
 }
+
+.navigation {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #888;
+  transition: all 0.3s ease;
+}
+
+.icon-box {
+  padding: 2px 12px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active { color: #FF9D3C; }
+.nav-item.active .icon-box { background: rgba(255, 157, 60, 0.1); }
 
 .nav-label {
-  font-size: 0.7rem;
-  color: #666;
-  font-weight: 400;
-  transition: all 0.2s ease;
-  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 600;
   margin-top: 2px;
-  font-family: 'Inter', sans-serif;
 }
 
-/* Active state */
-.nav-item.active .icon-wrapper {
-  border: 2px solid #FFA500;
-  transform: scale(1.05);
-}
-
-.nav-item.active .material-icons {
-  color: #FFA500;
-}
-
-.nav-item.active .nav-label {
-  color: #333;
-  font-weight: 500;
-}
-
-/* Hover states */
-.nav-item:hover .icon-wrapper {
-  background: rgba(244, 179, 66, 0.1);
-}
-
-.nav-item:hover .material-icons {
-  color: #555;
-}
-
-.nav-item:hover .nav-label {
-  color: #555;
-}
 
 
   .ev-bar[data-category="Student Life"] { background: var(--life); }

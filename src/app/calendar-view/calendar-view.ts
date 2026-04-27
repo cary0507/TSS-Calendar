@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './calendar-view.html',
-  styleUrl: './calendar-view.css',
+  styleUrls: ['./calendar-view.css'],
 })
 
 export class CalendarView implements OnInit {
@@ -19,6 +19,7 @@ export class CalendarView implements OnInit {
   displayYear = this.viewDate.getFullYear();
   displayMonth = this.viewDate.getMonth(); // 0–11 for date logic
   events: any[] = [];
+  today = new Date();
 
   constructor(private mainService: MainService, private cdr: ChangeDetectorRef, private router: Router) { }
 
@@ -56,6 +57,11 @@ async loadEvents() {
     this.daysInMonth = Array.from({ length: totalDays }, (_, i) => i + 1);
   }
 
+  isToday(day: number): boolean {
+    return this.displayYear === this.today.getFullYear()
+      && this.displayMonth === this.today.getMonth()
+      && day === this.today.getDate();
+  }
 
   goToEventDetails(id: string) {
     // Must match app.routes: { path: 'home/:event', component: EventDetails }
