@@ -107,7 +107,7 @@ getEventsForDay(day: number) {
   
   // 4. Map the UI category to the Database category
   const categoryMap: { [key: string]: string } = {
-    'Students Life': 'StudentLife', // Match your actual DB value
+    'Students Life': 'Student Life', // Match your actual DB value
     'Academics': 'Academics',
     'Clubs': 'Clubs',
     'Sports': 'Sports'
