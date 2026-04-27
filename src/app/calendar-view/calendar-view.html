@@ -36,14 +36,13 @@
         </div>
       </div>
     </main>
-    <br><br><br>
-    <div class="navigation">
-  <a routerLink="/home" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
-    <div class="icon-wrapper">
-      <span class="material-icons">home</span>
-    </div>
-    <p>Home</p>
-  </a>
+  <nav class="navigation">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+      <div class="icon-box">
+        <span class="material-icons">home</span>
+      </div>
+      <span class="nav-label">Home</span>
+    </a>
 
     <a routerLink="/calendar" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
       <div class="icon-box">
@@ -51,5 +50,6 @@
       </div>
       <span class="nav-label">Calendar</span>
     </a>
-  </div>
+  </nav>
+  
 </div>

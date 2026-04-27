@@ -10,14 +10,16 @@
 .page-wrapper {
   max-width: 1000px; /* 데스크톱 최대 너비 제한 */
   margin: 0 auto;
-  padding-bottom: 100px;
+  padding-bottom: clamp(80px, 15vw, 120px);
+  padding-left: clamp(10px, 5vw, 20px);
+  padding-right: clamp(10px, 5vw, 20px);
 }
 
 /* 타이틀 디자인 */
 h1.title {
   text-align: center;
-  margin: 2rem 0;
-  font-size: 2rem;
+  margin: clamp(1rem, 4vw, 2.5rem) 0;
+  font-size: clamp(1.25rem, 5vw, 2.25rem);
   font-weight: 800;
   color: #2D2D2D;
   letter-spacing: -0.5px;
@@ -30,13 +32,13 @@ h1.title {
   z-index: 10;
   background-color: rgba(255, 243, 225, 0.9);
   backdrop-filter: blur(10px);
-  padding: 0.5rem 0;
+  padding: clamp(0.3rem, 1vw, 0.5rem) 0;
 }
 
 .filters {
   display: flex;
-  gap: 0.75rem;
-  padding: 0.5rem 1rem;
+  gap: clamp(0.5rem, 2vw, 0.75rem);
+  padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 3vw, 1rem);
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -45,8 +47,8 @@ h1.title {
 .filters::-webkit-scrollbar { display: none; }
 
 .filter {
-  padding: 0.6rem 1.25rem;
-  font-size: 0.85rem;
+  padding: clamp(0.4rem, 1.5vw, 0.7rem) clamp(0.75rem, 3vw, 1.5rem);
+  font-size: clamp(0.7rem, 2vw, 0.95rem);
   font-weight: 600;
   border-radius: 50px;
   border: none;
@@ -72,15 +74,15 @@ h1.title {
 .filter.sports { background: #BFB2A2; color: #3E3830; }
 
 /* 날짜 구분선 */
-.day-section { margin-bottom: 2.5rem; padding: 0 1rem; }
+.day-section { margin-bottom: clamp(1.5rem, 4vw, 2.75rem); padding: 0 clamp(0.5rem, 3vw, 1.25rem); }
 
 .lined-title {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 3vw, 1.25rem);
   font-weight: 700;
   color: #4A4A4A;
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .lined-title::after {
@@ -95,7 +97,7 @@ h1.title {
 .event-grid {
   display: grid;
   grid-template-columns: 1fr; /* 모바일: 1열 */
-  gap: 1.25rem;
+  gap: clamp(0.75rem, 3vw, 1.5rem);
 }
 
 @media (min-width: 768px) {
@@ -105,7 +107,7 @@ h1.title {
 /* 이벤트 카드 본체 */
 .event-card {
   background: white;
-  border-radius: 20px;
+  border-radius: clamp(14px, 3vw, 24px);
   overflow: hidden;
   display: flex;
   cursor: pointer;
@@ -128,42 +130,42 @@ h1.title {
 
 .event-info {
   flex: 1;
-  padding: 1.25rem;
+  padding: clamp(0.75rem, 3vw, 1.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .event-name {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.05rem;
+  margin: 0 0 clamp(0.4rem, 2vw, 0.9rem) 0;
+  font-size: clamp(0.85rem, 2.5vw, 1.15rem);
   font-weight: 700;
   line-height: 1.4;
   color: #1a1a1a;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: clamp(4px, 1vw, 10px);
 }
 
 .event-name i {
   margin-top: 3px;
-  font-size: 0.9rem;
+  font-size: clamp(0.7rem, 2vw, 1rem);
   -webkit-text-stroke: 1.5px currentColor;
   color: transparent;
 }
 
 .meta-info p {
-  margin: 0.35rem 0;
-  font-size: 0.8rem;
+  margin: clamp(0.2rem, 1vw, 0.4rem) 0;
+  font-size: clamp(0.65rem, 1.5vw, 0.95rem);
   color: #666;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: clamp(4px, 1vw, 8px);
 }
 
 /* 이미지 처리 */
 .event-image-wrapper {
-  width: 120px;
+  width: clamp(80px, 25vw, 140px);
   position: relative;
 }
 
@@ -182,16 +184,16 @@ h1.title {
 /* 내비게이션 바 디자인 (플로팅) */
 .navigation {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: clamp(0.75rem, 2vw, 1.75rem);
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 2rem);
+  width: calc(100% - clamp(1rem, 3vw, 2.5rem));
   max-width: 400px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-around;
-  padding: 0.5rem;
+  padding: clamp(0.3rem, 1vw, 0.6rem);
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   z-index: 100;
@@ -207,7 +209,7 @@ h1.title {
 }
 
 .icon-box {
-  padding: 2px 12px;
+  padding: clamp(1px, 0.5vw, 3px) clamp(6px, 2vw, 14px);
   border-radius: 15px;
   transition: all 0.3s ease;
 }
@@ -216,9 +218,9 @@ h1.title {
 .nav-item.active .icon-box { background: rgba(255, 157, 60, 0.1); }
 
 .nav-label {
-  font-size: 0.6rem;
+  font-size: clamp(0.45rem, 1vw, 0.7rem);
   font-weight: 600;
-  margin-top: 2px;
+  margin-top: clamp(1px, 0.5vw, 3px);
 }
 
 /* 데이터 없음 상태 */
@@ -231,5 +233,5 @@ h1.title {
 .empty-state .material-icons {
   font-size: 3rem;
   margin-bottom: 1rem;
-  opacity: 0.5;
+  opacity: 0.5; 
 }

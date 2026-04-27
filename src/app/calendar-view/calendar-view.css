@@ -180,66 +180,20 @@
   }
 
 
-.nav-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  margin-bottom: -0.5em;
-  text-decoration: none;
-  color: inherit;
-}
 
-.nav-item.active {
-    transform: scale(1); /* Subtle scale effect */
-}
-
-.navigation {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #FFE3A8;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.2em 0;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 7;
-}
-
-
-.icon-wrapper {
-  background: transparent;
-  padding: 0.15rem;
-  border-radius: 12px;
-  margin-bottom: -0.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.material-icons {
-  font-size: 1.25rem;
-  color: #333;
-  transition: all 0.2s ease;
-}
-
+/* 내비게이션 바 디자인 (플로팅) */
 .navigation {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: clamp(0.75rem, 2vw, 1.75rem);
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 2rem);
+  width: calc(100% - clamp(1rem, 3vw, 2.5rem));
   max-width: 400px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-around;
-  padding: 0.5rem;
+  padding: clamp(0.3rem, 1vw, 0.6rem);
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   z-index: 100;
@@ -255,7 +209,7 @@
 }
 
 .icon-box {
-  padding: 2px 12px;
+  padding: clamp(1px, 0.5vw, 3px) clamp(6px, 2vw, 14px);
   border-radius: 15px;
   transition: all 0.3s ease;
 }
@@ -264,30 +218,28 @@
 .nav-item.active .icon-box { background: rgba(255, 157, 60, 0.1); }
 
 .nav-label {
-  font-size: 0.6rem;
+  font-size: clamp(0.45rem, 1vw, 0.7rem);
   font-weight: 600;
-  margin-top: 2px;
+  margin-top: clamp(1px, 0.5vw, 3px);
 }
 
+.ev-bar[data-category="Student Life"] { background: var(--life); }
+.ev-bar[data-category="Academics"] { background: var(--academics); }
+.ev-bar[data-category="Clubs"] { background: var(--clubs); }
+.ev-bar[data-category="Sports"] { background: var(--sports); }
 
+/* Default background for events with no matching category */
+.ev-bar { background: var(--all); }
 
-  .ev-bar[data-category="Student Life"] { background: var(--life); }
-  .ev-bar[data-category="Academics"] { background: var(--academics); }
-  .ev-bar[data-category="Clubs"] { background: var(--clubs); }
-  .ev-bar[data-category="Sports"] { background: var(--sports); }
-  
-  /* Default background for events with no matching category */
-  .ev-bar { background: var(--all); }
-  
-  /* 폼 섹션 */
-  .form-section { margin-top: 30px; }
-  .form-card { background: white; padding: 20px; border-radius: 20px; border: 1px solid #F0E6D8; }
-  .row { display: flex; align-items: center; margin-bottom: 12px; }
-  .row label { width: 60px; font-size: 12px; font-weight: 800; }
-  .row input, .row select {
-    flex: 1; border: 1px solid #EEE; padding: 10px; border-radius: 10px; font-size: 13px; background: #FAFAFA;
-  }
-  .btn-submit {
-    width: 100%; padding: 15px; border: none; background: #4A3F35;
-    color: white; border-radius: 12px; font-weight: 800; cursor: pointer;
-  }
+/* 폼 섹션 */
+.form-section { margin-top: 30px; }
+.form-card { background: white; padding: 20px; border-radius: 20px; border: 1px solid #F0E6D8; }
+.row { display: flex; align-items: center; margin-bottom: 12px; }
+.row label { width: 60px; font-size: 12px; font-weight: 800; }
+.row input, .row select {
+  flex: 1; border: 1px solid #EEE; padding: 10px; border-radius: 10px; font-size: 13px; background: #FAFAFA;
+}
+.btn-submit {
+  width: 100%; padding: 15px; border: none; background: #4A3F35;
+  color: white; border-radius: 12px; font-weight: 800; cursor: pointer;
+}
