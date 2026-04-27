@@ -37,7 +37,7 @@ export class Home implements OnInit {
       const result = await this.mainService.getEvents();
       const events = result?.events;
       this.events = Array.isArray(events) ? events : [];
-      this.filteredEvents = [...this.events];
+      this.filterEvents(); // Apply filtering on initial load
     } catch (e) {
       console.error('Home: failed to load events', e);
       this.events = [];
@@ -49,19 +49,24 @@ export class Home implements OnInit {
   }
 
   filterEvents(): void {
+    let eventsToShow = [...this.events];
+    
+    // Filter events to show only today or future events
+    eventsToShow = eventsToShow.filter(event => this.isTodayOrFuture(event));
+    
     if (this.selectedCategory === 'all') {
-      this.filteredEvents = [...this.events];
+      this.filteredEvents = eventsToShow;
     } else {
       // Map HTML category names to data category names
       const categoryMap: { [key: string]: string } = {
-        'student': 'StudentLife',
+        'student': 'Student Life',
         'academic': 'Academics',
         'clubs': 'Clubs',
         'sports': 'Sports'
       };
       
       const actualCategory = categoryMap[this.selectedCategory] || this.selectedCategory;
-      this.filteredEvents = this.events.filter((event) => event.category === actualCategory);
+      this.filteredEvents = eventsToShow.filter((event) => event.category === actualCategory);
     }
     
     this.cdr.detectChanges();
@@ -124,11 +129,42 @@ export class Home implements OnInit {
     return formatDate(date, 'MMMM d', 'en-US');
   }
 
+  /** Check if an event is today or in the future */
+  isTodayOrFuture(event: any): boolean {
+    const raw = event?.date;
+    if (!raw) {
+      return false;
+    }
+    
+    let eventDate: Date;
+    if (typeof raw?.toDate === 'function') {
+      eventDate = raw.toDate();
+    } else if (typeof raw === 'string') {
+      eventDate = new Date(raw);
+    } else {
+      return false;
+    }
+    
+    // Check if date is valid
+    if (isNaN(eventDate.getTime())) {
+      return false;
+    }
+    
+    // Get today's date and set time to midnight for comparison
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    // Set event date time to midnight for comparison
+    eventDate.setHours(0, 0, 0, 0);
+    
+    return eventDate >= today;
+  }
+
   /** Get CSS class for event card based on category */
   getEventCardClass(event: any): string {
     const category = event?.category;
     switch (category) {
-      case 'StudentLife':
+      case 'Student Life':
         return 'student-life';
       case 'Clubs':
         return 'clubs';

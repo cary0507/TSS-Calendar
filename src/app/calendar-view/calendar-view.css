@@ -271,7 +271,7 @@
 
 
 
-  .ev-bar[data-category="StudentLife"] { background: var(--life); }
+  .ev-bar[data-category="Student Life"] { background: var(--life); }
   .ev-bar[data-category="Academics"] { background: var(--academics); }
   .ev-bar[data-category="Clubs"] { background: var(--clubs); }
   .ev-bar[data-category="Sports"] { background: var(--sports); }
