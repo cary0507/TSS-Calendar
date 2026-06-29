@@ -1,59 +1,94 @@
-# TSSCalendar
+# 📅 TSS Calendar (App Club)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+A school-wide events platform built by App Club to centralize, organize, and distribute all academic and student-life events into a single unified system used by students and staff.
 
-## Building
+This is the **frontend application built with Angular**, powered by **Firebase Firestore** and **Firebase Authentication**, and connected to a separate Java backend service for extended backend logic.
 
-You'll need to build the project before you start the server. To build the project run:
+---
 
-```bash
-ng build
-```
+## 📌 Overview
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+TSS Calendar was built to solve a real operational problem in schools: important events were fragmented across multiple communication channels, leading to missed deadlines, confusion, and lack of visibility.
 
-## Development server
+This application consolidates all events into a structured system that allows students to:
+- View upcoming events in real time
+- Browse events by category
+- Explore a monthly calendar view
+- Receive reminders for important activities
 
-To start a local development server, run:
+It is actively used within the school environment as a production internal tool.
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## ✨ Features
 
-## Code scaffolding
+### 📌 Events Feed (Homepage)
+- Scrollable feed of all upcoming events
+- Automatically categorized:
+  - Academics
+  - Student Life
+  - Sports
+  - Competitions
+  - Performances
+  - School Announcements
+- Each event includes:
+  - Title
+  - Date & time
+  - Category
+  - Description
+  - Optional image
+  - “Notify Me” action
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+### 📆 Calendar View
+- Monthly calendar layout similar to Google Calendar
+- Events displayed on correct dates
+- Color-coded categories
+- Click-to-open event details
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+### 📄 Event Details
+- Full event information view
+- Description, date, time, category
+- Optional image
+- Notification/reminder option
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 🔔 Notifications
+- “Notify Me” system for event reminders
+- Email-based notifications (V1)
+- No user login required for basic event viewing
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+### 🧾 Event Submission System
+- Google Form-based submission pipeline
+- All submissions are reviewed by App Club
+- Approved events are manually added to Firestore
+- Ensures controlled, spam-free event management
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+### 🛠 Admin Panel
+- Internal tool for App Club executives
+- Create, edit, and delete events
+- Maintain event accuracy and updates
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 🧠 System Architecture
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Google Form Submission
+        ↓
+App Club Review
+        ↓
+Firebase Firestore Database
+        ↓
+Angular Frontend (TSS Calendar)
+        ↓
+Firebase Authentication (Admin Access)
+        ↓
+Notification System (Email / Future Expansion)
